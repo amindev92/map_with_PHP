@@ -34,7 +34,7 @@ map.on('locationerror', function(e){
 
 
 function currentLocate(){
-    map.locate({ setView: true, maxZoom: 21 });
+    map.locate({ setView: true, maxZoom: 18 });
 }
 
 
