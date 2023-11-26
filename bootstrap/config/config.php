@@ -10,3 +10,6 @@ $databaseConfig = (object)[
     "password" => ""
 ];
 
+$admins = [
+    "amin" => "123amin"
+];

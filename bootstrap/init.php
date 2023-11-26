@@ -1,9 +1,11 @@
 <?php
 
+session_start();
 include "constants.php";
 include BASE_PATH . "bootstrap/config/config.php";
 include BASE_PATH . "libs/helpers.php";
 include BASE_PATH . "libs/location.php";
+include BASE_PATH . "libs/auth.php";
 
 
 defined("BASE_PATH") or displayMessage("Permission Denied!");
