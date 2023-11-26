@@ -12,7 +12,7 @@
 
 <body>
 
-<div class="wrapper">
+    <div class="wrapper">
         <div class="wrapper__search-box">
             <div class="search-box">
                 <input type="text" id="search">
@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <div class="modal-overlay">
+    <div class="modal-overlay" style="display: none;">
         <div class="modal">
             <span class="close">x</span>
             <h3 class="modal-title">Register a Location</h3>
@@ -59,32 +59,25 @@
                         <div class="field-title">Type</div>
                         <div class="field-content">
                             <select name="type" id='l-type'>
-
-                                <option value="0">public</option>
-                                <option value="1">Office</option>
-                                <option value="2">Market</option>
-                                <option value="3">Service</option>
-                                <option value="4">Restuarant</option>
-                                <option value="5">University</option>
-                                <option value="6">Museum</option>
-                                <option value="7">Park</option>
-
+                            <?php foreach(locationTypes as $index => $item): ?>
+                                <option value="<?php echo $index; ?>"><?php echo $item; ?></option>
+                            <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
                     <div class="field-row">
                         <div class="field-title">Save</div>
                         <div class="field-content">
-                            <input type="submit" value=" save ">
+                            <input type="submit" value="save">
                         </div>
                     </div>
-                    <div class="ajax-result"></div>
+                    <div class="saveResult"></div>
                 </form>
             </div>
         </div>
     </div>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="<?php echo siteUrl("assets/js/script.js" . "?v=" . rand(1, 9999999)); ?>"></script>
 
 </body>

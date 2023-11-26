@@ -9,3 +9,4 @@ $databaseConfig = (object)[
     "userName" => "root",
     "password" => ""
 ];
+
