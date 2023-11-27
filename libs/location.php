@@ -20,6 +20,9 @@ function  getLocations($params = []) {
     if (isset($params["status"]) and in_array($params["status"],[0, 1])) {
         $condition = "WHERE status = {$params["status"]}";
     }
+    if (isset($params["keyword"])) {
+        $condition = "WHERE title LIKE '%{$params["keyword"]}%'";
+    }
     $sqlCommand = "SELECT * FROM location $condition";
     $stmt = $pdo->prepare($sqlCommand);
     $stmt -> execute();

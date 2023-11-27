@@ -62,6 +62,10 @@ $(document).ready(function(){
         $('.modal-overlay').fadeOut();
     })
 
+    $('.currentLoc').click(function(){
+        currentLocate();
+    })
+
     $('form#addLocationForm').submit(function(e){
         e.preventDefault();
         console.log(e);
@@ -74,6 +78,22 @@ $(document).ready(function(){
                 resultTag.html(response);
             }
         })
+    })
+
+
+    $('#search').keyup(function(){
+        const input = $(this);
+        const searchResult = $('.search-results');
+        searchResult.html('Searching ...');
+        $.ajax({
+            url: 'process/searching.php',
+            method: 'post',
+            data: {keyword: input.val()},
+            success: function(response){
+                searchResult.slideDown().html(response);
+            }
+        })
+
     })
 
 })

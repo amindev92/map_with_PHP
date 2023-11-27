@@ -17,21 +17,16 @@
             <div class="search-box">
                 <input type="text" id="search">
                 <div class="clear"></div>
-                <div class="search-results">
-                    <div class="result-item" data-lat='111' data-lng='222'>
-                        <span class="loc-type">Restaurant</span>
-                        <span class="loc-title">Akbar juje</span>
-                    </div>
-                    <div class="result-item" data-lat='111' data-lng='222'>
-                        <span class="loc-type">University</span>
-                        <span class="loc-title">Tehran University</span>
-                    </div>
+                <div class="search-results" style="display: none;">
+                    
                 </div>
             </div>
         </div>
         <div class="mapContainer">
             <div id="map"></div>
         </div>
+        <img src="assets/img/current.png" class="currentLoc">
+
     </div>
 
     <div class="modal-overlay" style="display: none;">
