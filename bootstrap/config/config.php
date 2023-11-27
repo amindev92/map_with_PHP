@@ -11,5 +11,5 @@ $databaseConfig = (object)[
 ];
 
 $admins = [
-    "amin" => "123amin"
+    "amin" => "123"
 ];

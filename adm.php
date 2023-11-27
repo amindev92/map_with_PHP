@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(login($userName, $password)){
         echo "Successful Login";
     }else{
-        displayMessage("error in Login");
+        echo("error in Login");
     }
 }
 
@@ -19,9 +19,16 @@ if (isset($_GET["logout"]) and $_GET["logout"] == 1) {
 }
 
 
-
 if (isLoggedInUser()) {
+    $params = null;
+    if (isset($_GET["status"]) and is_numeric($_GET["status"])) {
+        $params = $_GET;
+        // displayInformation($params);
+    }
+
+    $locations = getLocations($params);
     include BASE_PATH . "views/v_adm.php";
+    // displayInformation($locations);
 } else {
     include BASE_PATH . "views/v_auth.php";
 }

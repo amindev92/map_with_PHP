@@ -104,7 +104,7 @@
             z-index: 100;
         }
 
-        .modal-overlay .modal .close{
+        .modal-overlay .modal .close {
             position: absolute;
             top: 0;
             left: 50px;
@@ -140,19 +140,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php for ($i = 0; $i < 10; $i++) : ?>
+                    <?php foreach ($locations as $location) : ?>
                         <tr>
-                            <td>Place Name</td>
-                            <td class="text-center">Date</td>
-                            <td class="text-center">Lat</td>
-                            <td class="text-center">Lng</td>
+                            <td><?php echo $location->title; ?></td>
+                            <td class="text-center"><?php echo $location->created_at; ?></td>
+                            <td class="text-center"><?php echo $location->lat; ?></td>
+                            <td class="text-center"><?php echo $location->lng; ?></td>
                             <td>
-                                <button class="statusToggle active" data-loc='111'>Active</button>
-                                <button class="statusToggle" data-loc='111'>Inactive</button>
-                                <button class="preview" data-loc='111'>👁️‍🗨️</button>
+                                <button class="statusToggle <?php echo $location->status ? 'active' : ''; ?>" data-loc='<?php echo $location->id; ?>'><?php echo $location->status ? 'active' : 'inactive'; ?></button>
+
+                                <button class="preview" data-loc='<?php echo $location->id; ?>'>👁️‍🗨️</button>
                             </td>
                         </tr>
-                    <?php endfor; ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
@@ -176,11 +176,33 @@
         $(document).ready(function() {
             $('.preview').click(function() {
                 $('.modal-overlay').fadeIn();
-                $('#mapWivdow').attr('src', '<?= BASE_URL ?>');
+                $('#mapWivdow').attr('src', '<?= BASE_URL ?>' + '?loc=' + $(this).attr('data-loc'));
             });
             $('.modal-overlay .close').click(function() {
                 $('.modal-overlay').fadeOut();
             });
+
+            $('.statusToggle').click(function() {
+                const btn = $(this);
+                var locationId = btn.attr('data-loc');
+                $.ajax({
+                    url: 'process/toggleStatus.php',
+                    method: 'post',
+                    data: {
+                        locationId: locationId
+                    },
+                    success: function(response) {
+                        if (response) {
+                            btn.toggleClass('active');
+                            if (btn.html() == 'active') {
+                                btn.html('inactive')
+                            } else {
+                                btn.html('active')
+                            }
+                        }
+                    }
+                })
+            })
         });
     </script>
 </body>

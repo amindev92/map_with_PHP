@@ -59,9 +59,9 @@
                         <div class="field-title">Type</div>
                         <div class="field-content">
                             <select name="type" id='l-type'>
-                            <?php foreach(locationTypes as $index => $item): ?>
-                                <option value="<?php echo $index; ?>"><?php echo $item; ?></option>
-                            <?php endforeach; ?>
+                                <?php foreach (locationTypes as $index => $item) : ?>
+                                    <option value="<?php echo $index; ?>"><?php echo $item; ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
@@ -79,6 +79,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="<?php echo siteUrl("assets/js/script.js" . "?v=" . rand(1, 9999999)); ?>"></script>
+    <script>
+        <?php if ($location) : ?>
+
+            L.marker([<?php echo $location -> lat; ?>,<?php echo $location -> lng; ?>]).addTo(map).bindPopup("<?php echo $location->title; ?>").openPopup();
+
+        <?php endif; ?>
+    </script>
 
 </body>
 

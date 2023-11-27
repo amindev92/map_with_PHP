@@ -37,9 +37,9 @@ function currentLocate(){
 }
 
 
-setTimeout(function() {
-   currentLocate(); 
-}, 2000);
+// setTimeout(function() {
+//    currentLocate(); 
+// }, 2000);
 
 
 
@@ -53,6 +53,8 @@ map.on('dblclick', function(e){
 
 
 })
+
+
 
 $(document).ready(function(){
 
